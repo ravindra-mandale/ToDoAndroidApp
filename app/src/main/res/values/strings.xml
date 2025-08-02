@@ -1,0 +1,82 @@
+<resources>
+    <!-- Name of Application -->
+    <string name="app_name">ToDo Easy</string>
+
+    <!-- option menu labels -->
+    <string name="menu_light_theme">Light Theme</string>
+    <string name="menu_dark_theme">Dark Theme</string>
+    <string name="menu_refresh">Refresh</string>
+    <string name="menu_change_password">Change Password</string>
+    <string name="menu_logout">Log Out</string>
+
+    <!-- Shared preference strings resources -->
+    <string name="THEME_SHARED_PREF_NAME">Theme_Setting</string>
+    <string name="theme_switch_key">Theme_switch</string>
+    <string name="THEME_KEY">Theme_Key</string>
+    <string name="SHARED_PREFERENCE_NAME">USERS_SP</string>
+
+    <!-- Hint messages for registration and login screen -->
+    <string name="hint_edittext_email">Email Id *</string>
+    <string name="text_note_email">Note: Email Id will be the User Id</string>
+    <string name="hint_edittext_full_name">Full Name</string>
+    <string name="hint_edittext_mobile_number">Mobile Number *</string>
+    <string name="hint_edittext_old_password">Old Password *</string>
+    <string name="hint_edittext_password">Password *</string>
+    <string name="hint_edittext_confirm_password">Confirm Password *</string>
+
+    <!-- Button texts -->
+    <string name="button_text_register">Register</string>
+    <string name="button_text_login">Login</string>
+    <string name="button_change_password">Change Password</string>
+    <string name="text_forgotten_password">Forgotten Password</string>
+    <string name="button_send_reset_password_link">Reset Password</string>
+    <string name="text_new_user">New User, Register Here</string>
+    <string name="text_sign_in_with_google">Sign in with Google</string>
+
+    <!-- Login and Registration screen error messages -->
+    <string name="email_not_entered_error_message">Enter email, It can\'t be empty</string>
+    <string name="password_not_entered_error_message">Enter Password, It can\'t be empty</string>
+    <string name="fullname_not_entered_error_message">Enter Full Name, It can\'t be empty</string>
+    <string name="mobileno_not_entered_error_message">Enter Mobile No., It can\'t be empty</string>
+    <string name="confirm_password_not_entered_error_message">Enter Confirm Password, It can\'t be empty</string>
+    <string name="password_confirm_password_not_same_error_message">Confirm Password is not matching, Please check!</string>
+
+    <!-- Login and registration failed toast messages -->
+    <string name="login_success_message">Login Successful</string>
+    <string name="login_failed_message">Login Failed!</string>
+    <string name="registration_success_message">Registration Successful</string>
+    <string name="registration_failed_message">Registration Failed!</string>
+    <string name="enter_valid_email_address">Enter valid Email Address</string>
+    <string name="enter_valid_mobile_number">Enter valid Mobile Number</string>
+
+    <!-- Add Task Dialog string resources -->
+    <string name="dialog_title">Add Task</string>
+    <string name="hint_edittext_add_task">Enter Task Here</string>
+    <string name="hint_edittext_due_date">Due Date</string>
+    <string name="text_textview_add_to_list">Select Category</string>
+    <string name="text_cancel_button">Cancel</string>
+    <string name="text_add_task_button">Add</string>
+
+    <!-- Screen Titles -->
+    <string name="registration_title">Registration</string>
+    <string name="login_title">Login</string>
+    <string name="country_list_title">Country List</string>
+    <string name="task_list">Task List</string>
+    <string name="change_password">Change Password</string>
+    <string name="forgotten_password">Forgot password</string>
+
+    <!-- AlertDialog string resources -->
+    <string name="alert_dialog_title_exit">Confirm!</string>
+    <string name="alert_dialog_message_exit">Do you really want to Exit App?</string>
+    <string name="alert_dialog_title_logout">Logout!</string>
+    <string name="alert_dialog_message_logout">Do you really want to Logout?</string>
+    <string name="positive_text">YES</string>
+    <string name="negative_text">NO</string>
+    <string name="save">Save</string>
+    <string name="new_task">New Task</string>
+    <string name="tasks">Tasks</string>
+
+    <!-- Content description -->
+    <string name="floating_action_button_content_desc">Add Task</string>
+    <string name="temp_text">Go to the market and bring vegetables immediately today.</string>
+</resources>

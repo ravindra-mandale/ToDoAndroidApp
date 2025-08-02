@@ -1,0 +1,40 @@
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Ravindra Mandale/AndroidStudioProjects/ToDoAppNew/app/src/main/res/drawable-v24/bg_gradient.xml" value="0.2703125" />
+        <entry key="..\:/Users/Ravindra Mandale/AndroidStudioProjects/ToDoAppNew/app/src/main/res/drawable-v24/ic_baseline_email_24.xml" value="0.2703125" />
+        <entry key="..\:/Users/Ravindra Mandale/AndroidStudioProjects/ToDoAppNew/app/src/main/res/drawable-v24/ic_baseline_keyboard_backspace_24.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/Ravindra Mandale/AndroidStudioProjects/ToDoAppNew/app/src/main/res/drawable-v24/ic_baseline_person_24.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/Ravindra Mandale/AndroidStudioProjects/ToDoAppNew/app/src/main/res/drawable-v24/ic_baseline_smartphone_24.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/Ravindra Mandale/AndroidStudioProjects/ToDoAppNew/app/src/main/res/drawable-v24/splash_background.xml" value="0.2703125" />
+        <entry key="..\:/Users/Ravindra Mandale/AndroidStudioProjects/ToDoAppNew/app/src/main/res/drawable/homescreen.xml" value="0.157" />
+        <entry key="..\:/Users/Ravindra Mandale/AndroidStudioProjects/ToDoAppNew/app/src/main/res/drawable/ic_homeactive.xml" value="0.1335" />
+        <entry key="..\:/Users/Ravindra Mandale/AndroidStudioProjects/ToDoAppNew/app/src/main/res/drawable/ic_homeinactive.xml" value="0.1335" />
+        <entry key="..\:/Users/Ravindra Mandale/AndroidStudioProjects/ToDoAppNew/app/src/main/res/drawable/in_moreactive.xml" value="0.1705" />
+        <entry key="..\:/Users/Ravindra Mandale/AndroidStudioProjects/ToDoAppNew/app/src/main/res/layout/activity_change_password.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Ravindra Mandale/AndroidStudioProjects/ToDoAppNew/app/src/main/res/layout/activity_demo.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Ravindra Mandale/AndroidStudioProjects/ToDoAppNew/app/src/main/res/layout/activity_forgot_password_screen.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Ravindra Mandale/AndroidStudioProjects/ToDoAppNew/app/src/main/res/layout/activity_login.xml" value="0.4" />
+        <entry key="..\:/Users/Ravindra Mandale/AndroidStudioProjects/ToDoAppNew/app/src/main/res/layout/activity_main.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/Ravindra Mandale/AndroidStudioProjects/ToDoAppNew/app/src/main/res/layout/activity_recycler_demo_screen.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Ravindra Mandale/AndroidStudioProjects/ToDoAppNew/app/src/main/res/layout/activity_registration.xml" value="0.264" />
+        <entry key="..\:/Users/Ravindra Mandale/AndroidStudioProjects/ToDoAppNew/app/src/main/res/layout/activity_splash.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Ravindra Mandale/AndroidStudioProjects/ToDoAppNew/app/src/main/res/layout/country_single_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Ravindra Mandale/AndroidStudioProjects/ToDoAppNew/app/src/main/res/layout/fragment_list_task.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Ravindra Mandale/AndroidStudioProjects/ToDoAppNew/app/src/main/res/layout/layout_fragment_dialog_addtask.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Ravindra Mandale/AndroidStudioProjects/ToDoAppNew/app/src/main/res/layout/layout_task.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Ravindra Mandale/AndroidStudioProjects/ToDoAppNew/app/src/main/res/layout/layout_toolbar.xml" value="0.4" />
+        <entry key="..\:/Users/Ravindra Mandale/AndroidStudioProjects/ToDoAppNew/app/src/main/res/layout/new_task.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Ravindra Mandale/AndroidStudioProjects/ToDoAppNew/app/src/main/res/layout/task_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Ravindra Mandale/AndroidStudioProjects/ToDoAppNew/app/src/main/res/menu/todo_menu.xml" value="0.25416666666666665" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
