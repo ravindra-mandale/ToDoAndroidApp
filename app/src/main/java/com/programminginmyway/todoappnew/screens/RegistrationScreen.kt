@@ -9,11 +9,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.programminginmyway.todoappnew.R
-import com.programminginmyway.todoappnew.RegistrationViewModel
-import com.programminginmyway.todoappnew.databinding.ActivityRegistrationScreenNewBinding
+import com.programminginmyway.todoappnew.viewmodel.RegistrationViewModel
+import com.programminginmyway.todoappnew.databinding.ActivityRegistrationScreenBinding
 
-class RegistrationScreenNew : BaseSecureActivity() {
-    private lateinit var binding: ActivityRegistrationScreenNewBinding
+class RegistrationScreen : BaseSecureActivity() {
+    private lateinit var binding: ActivityRegistrationScreenBinding
     private val viewModel: RegistrationViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +21,7 @@ class RegistrationScreenNew : BaseSecureActivity() {
         installSplashScreen()
 
         // Initialize binding
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_registration_screen_new)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_registration_screen)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 

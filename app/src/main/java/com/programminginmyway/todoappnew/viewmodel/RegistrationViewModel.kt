@@ -1,4 +1,4 @@
-package com.programminginmyway.todoappnew
+package com.programminginmyway.todoappnew.viewmodel
 
 import android.annotation.SuppressLint
 import android.app.Application
@@ -7,13 +7,15 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import android.text.TextUtils
 import androidx.lifecycle.viewModelScope
-import com.programminginmyway.todoappnew.Database.UserSQLiteOpenHelper
-import com.programminginmyway.todoappnew.Model.Users
+import com.programminginmyway.todoappnew.R
+import com.programminginmyway.todoappnew.Utils.PasswordUtils
+import com.programminginmyway.todoappnew.database.AppDatabase
+import com.programminginmyway.todoappnew.model.UsersNew
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-public class RegistrationViewModel(application: Application) : AndroidViewModel(application) {
+class RegistrationViewModel(application: Application) : AndroidViewModel(application) {
     val toastMessage = MutableLiveData<String?>()
     val registrationSuccess = MutableLiveData<Boolean>()
     val email = MutableLiveData("")
@@ -31,9 +33,7 @@ public class RegistrationViewModel(application: Application) : AndroidViewModel(
 
     @SuppressLint("StaticFieldLeak")
     private val context = getApplication<Application>().applicationContext
-    private val userSQLiteOpenHelper =
-        UserSQLiteOpenHelper(context)
-
+    private val userDao = AppDatabase.getDatabase(application).userDao()
 
     fun onRegisterClicked() {
         clearErrors() // Reset errors before validation
@@ -83,15 +83,20 @@ public class RegistrationViewModel(application: Application) : AndroidViewModel(
         }
 
         if (!isValid) return
-
+        //kotlin coroutine for database operations
         viewModelScope.launch {
             // Proceed with registration
-            val result = withContext(Dispatchers.IO) {
-                userSQLiteOpenHelper.insertUser(
-                    Users(emailId, fullNameStr, mobileNoStr, passwordStr)
+            val insertResult = withContext(Dispatchers.IO) {
+                // Insert user
+                val user = UsersNew(
+                    EMAILID = emailId,
+                    FULLNAME = fullNameStr,
+                    MOBILENO = mobileNoStr,
+                    PASSWORD = PasswordUtils.hashPassword(passwordStr)
                 )
+                userDao.insertUser(user)
             }
-            if (result) {
+            if (insertResult != -1L) {
                 toastMessage.value = context.getString(R.string.registration_success_message)
                 registrationSuccess.value = true  // Notify UI
             } else {
@@ -108,5 +113,4 @@ public class RegistrationViewModel(application: Application) : AndroidViewModel(
         passwordError.value = null
         confirmPasswordError.value = null
     }
-
 }

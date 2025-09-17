@@ -1,4 +1,4 @@
-package com.programminginmyway.todoappnew.Model;
+package com.programminginmyway.todoappnew.model;
 
 public class ToDoModel {
     private int id, status;

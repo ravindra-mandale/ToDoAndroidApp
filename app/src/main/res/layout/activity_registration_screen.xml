@@ -1,13 +1,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".screens.RegistrationScreenNew">
+    tools:context=".screens.RegistrationScreen">
 
     <data>
         <import type="android.view.View" />
         <!-- Define variables or observable data models if needed -->
         <variable
             name="viewModel"
-            type="com.programminginmyway.todoappnew.RegistrationViewModel" />
+            type="com.programminginmyway.todoappnew.viewmodel.RegistrationViewModel" />
     </data>
 
     <ScrollView
@@ -26,6 +26,7 @@
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="25dp"
+                android:autofillHints="emailAddress"
                 android:drawableEnd="@drawable/ic_baseline_email_24"
                 android:hint="@string/hint_edittext_email"
                 android:inputType="textEmailAddress"
@@ -60,6 +61,7 @@
                 android:hint="@string/hint_edittext_full_name"
                 android:inputType="text"
                 android:minHeight="48dp"
+                android:autofillHints="name"
                 android:text="@={viewModel.fullName}" />
 
             <TextView
@@ -82,6 +84,7 @@
                 android:hint="@string/hint_edittext_mobile_number"
                 android:inputType="phone"
                 android:minHeight="48dp"
+                android:autofillHints="phone"
                 android:text="@={viewModel.mobileNo}" />
 
             <TextView
@@ -104,6 +107,7 @@
                 android:inputType="textPassword"
                 android:maxLength="16"
                 android:minHeight="48dp"
+                android:autofillHints="password"
                 android:text="@={viewModel.password}" />
 
             <TextView
@@ -126,6 +130,7 @@
                 android:inputType="textPassword"
                 android:maxLength="16"
                 android:minHeight="48dp"
+                android:autofillHints="password"
                 android:text="@={viewModel.confirmPassword}" />
 
             <TextView

@@ -1,4 +1,4 @@
-package com.programminginmyway.todoappnew
+package com.programminginmyway.todoappnew.compose
 
 import android.os.Bundle
 import android.widget.Toast

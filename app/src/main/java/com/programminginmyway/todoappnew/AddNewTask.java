@@ -18,8 +18,8 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-import com.programminginmyway.todoappnew.Database.DatabaseHandler;
-import com.programminginmyway.todoappnew.Model.ToDoModel;
+import com.programminginmyway.todoappnew.database.DatabaseHandler;
+import com.programminginmyway.todoappnew.model.ToDoModelNew;
 
 public class AddNewTask extends BottomSheetDialogFragment {
     public static final String TAG = "ActionBottomDialog";
@@ -100,7 +100,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
                     db.updateTask(bundle.getInt("id"), text);
                 }
                 else {
-                    ToDoModel task = new ToDoModel();
+                    ToDoModelNew task = new ToDoModelNew();
                     task.setTask(text);
                     task.setStatus(0);
                     db.insertTask(task);

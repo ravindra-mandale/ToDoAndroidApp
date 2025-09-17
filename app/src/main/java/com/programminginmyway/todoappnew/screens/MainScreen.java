@@ -10,9 +10,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.splashscreen.SplashScreen;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,25 +22,25 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.programminginmyway.todoappnew.Adapters.ToDoAdapter;
 import com.programminginmyway.todoappnew.AddNewTask;
-import com.programminginmyway.todoappnew.Database.DatabaseHandler;
+import com.programminginmyway.todoappnew.database.DatabaseHandler;
 import com.programminginmyway.todoappnew.DialogCloseListener;
-import com.programminginmyway.todoappnew.Model.ToDoModel;
 import com.programminginmyway.todoappnew.R;
 import com.programminginmyway.todoappnew.RecyclerItemTouchHelper;
 import com.programminginmyway.todoappnew.ShowAlertDialog;
 import com.programminginmyway.todoappnew.ThemeSetter;
+import com.programminginmyway.todoappnew.model.ToDoModelNew;
 
 import java.util.Collections;
 import java.util.List;
 
-public class MainScreen extends AppCompatActivity implements DialogCloseListener {
+public class MainScreen extends BaseSecureActivity implements DialogCloseListener {
     SharedPreferences sp;
     public static final String USER_LOGIN_KEY = "USERLOGIN";
     private String keyDarkTheme = "isDarkTheme";
     private FloatingActionButton floatingActionButton;
     private TextView taskTextView;
     private ToDoAdapter tasksAdapter;
-    private List<ToDoModel> taskList;
+    private List<ToDoModelNew> taskList;
     private DatabaseHandler db;
     private RecyclerView tasksRecyclerView;
 
@@ -100,6 +100,13 @@ public class MainScreen extends AppCompatActivity implements DialogCloseListener
         floatingActionButton.setOnClickListener(view -> {
             showAddTaskFragment();
         });
+
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                showExitDialog();
+            }
+        });
     }
 
     private void showAddTaskFragment() {
@@ -116,64 +123,40 @@ public class MainScreen extends AppCompatActivity implements DialogCloseListener
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.light_theme_menu:
-                ThemeSetter.applyTheme(false);
-                return true;
-            case R.id.dark_theme_menu:
-                ThemeSetter.applyTheme(true);
-                return true;
-//            case R.id.change_password_menu:
-//                startActivity(new Intent(MainScreen.this, ChangePassword.class));
-//                return true;
-            case R.id.logout_menu:
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-                alertDialogBuilder.setTitle(R.string.alert_dialog_title_logout);
-                alertDialogBuilder.setMessage(R.string.alert_dialog_message_logout);
-                alertDialogBuilder.setCancelable(false);
-                alertDialogBuilder.setPositiveButton(R.string.positive_text, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        SharedPreferences.Editor editor = sp.edit();
-                        editor.putBoolean(USER_LOGIN_KEY, false);
-                        editor.apply();
-                        finish();
-                        FirebaseAuth.getInstance().signOut();
-                        startActivity(new Intent(MainScreen.this, LoginScreen.class));
-                    }
-                });
-                alertDialogBuilder.setNegativeButton(R.string.negative_text, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                alertDialog.show();
-
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.light_theme_menu) {
+            ThemeSetter.applyTheme(false);
+            return true;
+        } else if (item.getItemId() == R.id.dark_theme_menu) {
+            ThemeSetter.applyTheme(true);
+            return true;
+        } else if (item.getItemId() == R.id.logout_menu) {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder.setTitle(R.string.alert_dialog_title_logout);
+            alertDialogBuilder.setMessage(R.string.alert_dialog_message_logout);
+            alertDialogBuilder.setCancelable(false);
+            alertDialogBuilder.setPositiveButton(R.string.positive_text, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    SharedPreferences.Editor editor = sp.edit();
+                    editor.putBoolean(USER_LOGIN_KEY, false);
+                    editor.apply();
+                    finish();
+                    FirebaseAuth.getInstance().signOut();
+                    startActivity(new Intent(MainScreen.this, LoginScreen.class));
+                }
+            });
+            alertDialogBuilder.setNegativeButton(R.string.negative_text, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        AlertDialog.Builder alertDialogBuilder = ShowAlertDialog.createAlertDialogForCloseApp(this);
-        alertDialogBuilder.setPositiveButton(R.string.positive_text, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                finishAffinity();
-                System.exit(0);
-            }
-        });
-        alertDialogBuilder.setNegativeButton(R.string.negative_text, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -219,5 +202,15 @@ public class MainScreen extends AppCompatActivity implements DialogCloseListener
     protected void onDestroy() {
         super.onDestroy();
         Log.d("####", "onDestroy: ");
+    }
+
+    public void showExitDialog() {
+        final AlertDialog.Builder alertDialogBuilder = ShowAlertDialog.createAlertDialogForCloseApp(this);
+        alertDialogBuilder.setPositiveButton(R.string.positive_text, (dialog, which) -> {
+            finishAffinity();
+        });
+        alertDialogBuilder.setNegativeButton(R.string.negative_text, (dialog, which) -> dialog.cancel());
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 }

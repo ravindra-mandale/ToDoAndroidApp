@@ -12,15 +12,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.programminginmyway.todoappnew.AddNewTask;
-import com.programminginmyway.todoappnew.Database.DatabaseHandler;
-import com.programminginmyway.todoappnew.screens.MainScreen;
-import com.programminginmyway.todoappnew.Model.ToDoModel;
 import com.programminginmyway.todoappnew.R;
+import com.programminginmyway.todoappnew.database.DatabaseHandler;
+import com.programminginmyway.todoappnew.model.ToDoModelNew;
+import com.programminginmyway.todoappnew.screens.MainScreen;
 
 import java.util.List;
 
 public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
-    private List<ToDoModel> todoList;
+    private List<ToDoModelNew> todoList;
     private DatabaseHandler db;
     private MainScreen activity;
 
@@ -41,7 +41,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         db.openDatabase();
 
-        final ToDoModel item = todoList.get(position);
+        final ToDoModelNew item = todoList.get(position);
         holder.task.setText(item.getTask());
         holder.task.setChecked(toBoolean(item.getStatus()));
         holder.task.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -69,20 +69,20 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
         return activity;
     }
 
-    public void setTasks(List<ToDoModel> todoList) {
+    public void setTasks(List<ToDoModelNew> todoList) {
         this.todoList = todoList;
         notifyDataSetChanged();
     }
 
     public void deleteItem(int position) {
-        ToDoModel item = todoList.get(position);
+        ToDoModelNew item = todoList.get(position);
         db.deleteTask(item.getId());
         todoList.remove(position);
         notifyItemRemoved(position);
     }
 
     public void editItem(int position) {
-        ToDoModel item = todoList.get(position);
+        ToDoModelNew item = todoList.get(position);
         Bundle bundle = new Bundle();
         bundle.putInt("id", item.getId());
         bundle.putString("task", item.getTask());

@@ -1,75 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".screens.LoginScreen">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <data>
+
+        <import type="android.view.View" />
+        <!-- Define variables or observable data models if needed -->
+        <variable
+            name="viewModel"
+            type="com.programminginmyway.todoappnew.viewmodel.LoginViewModel" />
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".screens.LoginScreen">
 
-        <EditText
-            android:id="@+id/edittext_email_id"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="25dp"
-            android:drawableEnd="@drawable/ic_baseline_email_24"
-            android:hint="@string/hint_edittext_email"
-            android:inputType="textEmailAddress"
-            android:minHeight="48dp" />
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/edittext_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="25dp"
-            android:hint="@string/hint_edittext_password"
-            android:inputType="textPassword"
-            android:maxLength="16"
-            android:minHeight="48dp" />
+            <EditText
+                android:id="@+id/edittext_email_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="25dp"
+                android:autofillHints="emailAddress"
+                android:drawableEnd="@drawable/ic_baseline_email_24"
+                android:hint="@string/hint_edittext_email"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
+                android:text="@={viewModel.emailId}" />
 
-        <Button
-            android:id="@+id/button_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="25dp"
-            android:text="@string/button_text_login"
-            android:textStyle="bold" />
+            <EditText
+                android:id="@+id/edittext_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="25dp"
+                android:autofillHints="password"
+                android:hint="@string/hint_edittext_password"
+                android:inputType="textPassword"
+                android:maxLength="16"
+                android:minHeight="48dp"
+                android:text="@={viewModel.password}" />
 
-        <TextView
-            android:id="@+id/textview_forgotten_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:text="@string/text_forgotten_password"
-            android:textStyle="bold" />
+            <Button
+                android:id="@+id/button_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="25dp"
+                android:onClick="@{() -> viewModel.validateAndLogin()}"
+                android:text="@string/button_text_login"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textview_newuser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:text="@string/text_new_user"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/textview_forgotten_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:text="@string/text_forgotten_password"
+                android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/button_google_signIn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:drawableLeft="@drawable/ic_baseline_login_24"
-            android:textStyle="bold"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="25dp"
-            android:text="@string/text_sign_in_with_google" />
+            <TextView
+                android:id="@+id/textview_newuser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:text="@string/text_new_user"
+                android:textStyle="bold" />
 
-    </LinearLayout>
-</ScrollView>
+            <Button
+                android:id="@+id/button_google_signIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="25dp"
+                android:drawableLeft="@drawable/ic_baseline_login_24"
+                android:text="@string/text_sign_in_with_google"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

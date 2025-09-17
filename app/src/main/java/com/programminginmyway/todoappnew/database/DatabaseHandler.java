@@ -1,4 +1,4 @@
-package com.programminginmyway.todoappnew.Database;
+package com.programminginmyway.todoappnew.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.programminginmyway.todoappnew.Model.ToDoModel;
+import com.programminginmyway.todoappnew.model.ToDoModelNew;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,23 +44,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db = this.getWritableDatabase();
     }
 
-    public void insertTask(ToDoModel task){
+    public void insertTask(ToDoModelNew task){
         ContentValues cv = new ContentValues();
         cv.put(TASK, task.getTask());
         cv.put(STATUS, 0);
         db.insert(TODO_TABLE, null, cv);
     }
 
-    public List<ToDoModel> getAllTasks(){
-        List<ToDoModel> taskList = new ArrayList<>();
+    public List<ToDoModelNew> getAllTasks(){
+        List<ToDoModelNew> taskList = new ArrayList<>();
         Cursor cur = null;
         db.beginTransaction();
         try{
             cur = db.query(TODO_TABLE, null, null, null, null, null, null, null);
-            if(cur != null){
-                if(cur.moveToFirst()){
+            if (cur != null) {
+                if (cur.moveToFirst()){
                     do{
-                        ToDoModel task = new ToDoModel();
+                        ToDoModelNew task = new ToDoModelNew();
                         task.setId(cur.getInt(cur.getColumnIndex(ID)));
                         task.setTask(cur.getString(cur.getColumnIndex(TASK)));
                         task.setStatus(cur.getInt(cur.getColumnIndex(STATUS)));

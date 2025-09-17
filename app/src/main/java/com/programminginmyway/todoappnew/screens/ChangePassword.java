@@ -2,11 +2,9 @@ package com.programminginmyway.todoappnew.screens;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.programminginmyway.todoappnew.R;
 
-public class ChangePassword extends AppCompatActivity {
+public class ChangePassword extends BaseSecureActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
