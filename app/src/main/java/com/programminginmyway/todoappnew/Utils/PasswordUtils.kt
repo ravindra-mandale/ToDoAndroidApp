@@ -3,6 +3,7 @@ package com.programminginmyway.todoappnew.Utils
 import java.security.MessageDigest
 
 object PasswordUtils {
+    //singleton object- this PasswordUtils class has only one instance throughout the application, no need to use new keyword
 
     fun hashPassword(password: String): String {
         val bytes = password.toByteArray()
@@ -12,6 +13,6 @@ object PasswordUtils {
     }
 
     fun isPasswordValid(inputPassword: String, storedHash: String): Boolean {
-        return PasswordUtils.hashPassword(inputPassword) == storedHash
+        return hashPassword(inputPassword) == storedHash
     }
 }

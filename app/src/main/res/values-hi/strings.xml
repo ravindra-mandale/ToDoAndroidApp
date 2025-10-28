@@ -1,19 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Name of Application -->
-    <string name="app_name" translatable="false">ToDo Easy</string>
-
     <!-- option menu labels -->
     <string name="menu_light_theme">Light Theme</string>
     <string name="menu_dark_theme">Dark Theme</string>
     <string name="menu_refresh">Refresh</string>
     <string name="menu_change_password">Change Password</string>
     <string name="menu_logout">Log Out</string>
-
-    <!-- Shared preference strings resources -->
-    <string name="THEME_SHARED_PREF_NAME" translatable="false">Theme_Setting</string>
-    <string name="theme_switch_key" translatable="false">Theme_switch</string>
-    <string name="THEME_KEY" translatable="false">Theme_Key</string>
-    <string name="SHARED_PREFERENCE_NAME" translatable="false">USERS_SP</string>
 
     <!-- Hint messages for registration and login screen -->
     <string name="hint_edittext_email">Email Id *</string>

@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_baseline_keyboard_backspace_24"
                 android:scaleType="center"
-                android:contentDescription="Back"
+                android:contentDescription="@string/back"
                 android:focusable="true"
                 android:background="?selectableItemBackground"/>
 

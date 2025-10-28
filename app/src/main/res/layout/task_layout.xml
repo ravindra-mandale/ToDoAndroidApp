@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:paddingStart="8dp"
+            android:paddingEnd="8dp"
             android:buttonTint="@color/logo_background"
             tools:text="@string/temp_text"/>
 

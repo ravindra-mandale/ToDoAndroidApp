@@ -1,9 +1,10 @@
-package com.programminginmyway.todoappnew.model
+package com.programminginmyway.todoappnew.data.database.roomDb.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.programminginmyway.todoappnew.data.database.USERS_TABLE
 
-@Entity(tableName = "USERS")
+@Entity(tableName = USERS_TABLE)
 data class UsersNew (
     @PrimaryKey(autoGenerate = true)
     val USERID: Int = 0,

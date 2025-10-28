@@ -19,6 +19,11 @@ import com.programminginmyway.todoappnew.ShowAlertDialog
 import com.programminginmyway.todoappnew.databinding.ActivityLoginBinding
 import com.programminginmyway.todoappnew.viewmodel.LoginViewModel
 import com.programminginmyway.todoappnew.R
+import com.programminginmyway.todoappnew.data.dataStore
+import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.lifecycle.lifecycleScope
+import com.programminginmyway.todoappnew.Utils.showToast
+import kotlinx.coroutines.launch
 
 class LoginScreen : BaseSecureActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -28,8 +33,8 @@ class LoginScreen : BaseSecureActivity() {
     private lateinit var mAuth: FirebaseAuth
 
     companion object {
-        const val USER_LOGIN_KEY = "USERLOGIN"
         private const val RC_SIGN_IN = 3003
+        val USER_LOGGED_IN = booleanPreferencesKey("user_logged_in")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,12 +47,7 @@ class LoginScreen : BaseSecureActivity() {
         mAuth = FirebaseAuth.getInstance()
         createRequest()
 
-        // Check if user already logged in
-        val prefs = getSharedPreferences(getString(R.string.SHARED_PREFERENCE_NAME), MODE_PRIVATE)
-        if (prefs.getBoolean(USER_LOGIN_KEY, false)) {
-            startActivity(Intent(this, MainScreen::class.java))
-            finish()
-        }
+        checkLogin()
 
         // Observe login success
         viewModel.loginSuccess.observe(this) { success ->
@@ -55,6 +55,10 @@ class LoginScreen : BaseSecureActivity() {
                 startActivity(Intent(this, MainScreen::class.java))
                 finish()
             }
+        }
+
+        viewModel.snackBarMessage.observe(this) { stringResId ->
+            showToast(stringResId, Toast.LENGTH_SHORT)
         }
 
         // New user
@@ -79,6 +83,18 @@ class LoginScreen : BaseSecureActivity() {
         })
     }
 
+    private fun checkLogin() {
+        lifecycleScope.launch {
+            applicationContext.dataStore.data.collect { prefs ->
+                val isLoggedIn = prefs[USER_LOGGED_IN] ?: false
+                if (isLoggedIn) {
+                    startActivity(Intent(this@LoginScreen, MainScreen::class.java))
+                    finish()
+                }
+            }
+        }
+    }
+
     private fun createRequest() {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
@@ -99,8 +115,7 @@ class LoginScreen : BaseSecureActivity() {
             try {
                 firebaseAuthWithGoogle(task)
             } catch (e: Exception) {
-                Toast.makeText(applicationContext, "Sign in Failed, try again", Toast.LENGTH_LONG)
-                    .show()
+                showToast(getString(R.string.sign_in_failed_try_again), Toast.LENGTH_LONG)
             }
         }
     }

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.programminginmyway.todoappnew.R
+import com.programminginmyway.todoappnew.Utils.showToast
 import com.programminginmyway.todoappnew.viewmodel.RegistrationViewModel
 import com.programminginmyway.todoappnew.databinding.ActivityRegistrationScreenBinding
 
@@ -32,7 +33,7 @@ class RegistrationScreen : BaseSecureActivity() {
         // Observe toast messages from ViewModel
         viewModel.toastMessage.observe(this) { message ->
             message?.let {
-                Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+                showToast(it, Toast.LENGTH_SHORT)
                 viewModel.toastMessage.value = null // Reset to avoid showing again
             }
         }

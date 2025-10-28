@@ -13,16 +13,15 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.programminginmyway.todoappnew.Adapters.ToDoAdapter;
+import com.programminginmyway.todoappnew.adapters.TaskAdapter;
 
 public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
-    private ToDoAdapter adapter;
+    private final TaskAdapter adapter;
 
-    public RecyclerItemTouchHelper(ToDoAdapter adapter) {
+    public RecyclerItemTouchHelper(TaskAdapter adapter) {
         super(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
         this.adapter = adapter;
     }
-
 
     @Override
     public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
@@ -34,9 +33,9 @@ public class RecyclerItemTouchHelper extends ItemTouchHelper.SimpleCallback {
         final int position = viewHolder.getAdapterPosition();
         if (direction == ItemTouchHelper.LEFT) {
             AlertDialog.Builder builder = new AlertDialog.Builder(adapter.getContext());
-            builder.setTitle("Delete Task !");
-            builder.setMessage("Are you sure, you want to delete this Task?");
-            builder.setPositiveButton("Confirm",
+            builder.setTitle(R.string.delete_task);
+            builder.setMessage(R.string.are_u_you_sure_you_want_to_delete_this_task);
+            builder.setPositiveButton(R.string.confirm,
                     new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {

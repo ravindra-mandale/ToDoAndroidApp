@@ -1,9 +1,9 @@
-package com.programminginmyway.todoappnew.database
+package com.programminginmyway.todoappnew.data.database.roomDb.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.programminginmyway.todoappnew.model.UsersNew
+import com.programminginmyway.todoappnew.data.database.roomDb.model.UsersNew
 
 @Dao
 interface UserDao {

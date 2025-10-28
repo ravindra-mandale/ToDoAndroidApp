@@ -9,8 +9,8 @@ import android.text.TextUtils
 import androidx.lifecycle.viewModelScope
 import com.programminginmyway.todoappnew.R
 import com.programminginmyway.todoappnew.Utils.PasswordUtils
-import com.programminginmyway.todoappnew.database.AppDatabase
-import com.programminginmyway.todoappnew.model.UsersNew
+import com.programminginmyway.todoappnew.data.database.roomDb.database.AppDatabase
+import com.programminginmyway.todoappnew.data.database.roomDb.model.UsersNew
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

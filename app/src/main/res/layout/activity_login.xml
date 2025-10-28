@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <import type="android.view.View" />
         <!-- Define variables or observable data models if needed -->
         <variable
@@ -83,9 +82,23 @@
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="25dp"
-                android:drawableLeft="@drawable/ic_baseline_login_24"
+                android:drawableStart="@drawable/ic_baseline_login_24"
                 android:text="@string/text_sign_in_with_google"
                 android:textStyle="bold" />
+
+<!--            Service ui code -->
+<!--            <Button-->
+<!--                android:id="@+id/btnPlay"-->
+<!--                android:text="Play Music"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content" />-->
+
+<!--            <Button-->
+<!--                android:id="@+id/btnStop"-->
+<!--                android:text="Stop Music"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="20dp" />-->
 
         </LinearLayout>
     </ScrollView>
